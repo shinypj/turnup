@@ -1,6 +1,7 @@
 ﻿using Demo.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
@@ -26,7 +27,14 @@ namespace Demo.Page
 
         internal void ValidateEmployee()
         {
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
+            //var wait = new WebDriverWait(CommonDriver.driver,TimeSpan.FromSeconds(10));
+            //wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\"container\"]/p/a")));
+            //wait.Until(ExpectedConditions.ElementToBeClickable(btnCreate));
+
+            // btnCreate.WaitForElement(TimeSpan.FromSeconds(10));
+            btnCreate.WaitForElement(TimeSpan.FromSeconds(10));
+
             while (true)
             {
                 var i = 1;
@@ -46,6 +54,8 @@ namespace Demo.Page
                 btnNext.Click();
             }
         }
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"container\"]/p/a")]
+        IWebElement btnCreate { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@id='Name']")]
 		private IWebElement Name { set; get; }
@@ -79,9 +89,13 @@ namespace Demo.Page
 		{
 			//Administrator			
 			Administrator.Click();
+            //Administrator.WaitForElement(TimeSpan.FromSeconds(10));
 
-			//Go to Employee			
-			Employee.Click();
+            //Go to Employee			
+            Employee.WaitForElement(TimeSpan.FromSeconds(3));
+
+            Employee.Click();
+
 
 			//Crate new Employee
 
