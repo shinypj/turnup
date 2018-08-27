@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Helpers\CommonDriver.cs" />
     <Compile Include="Helpers\ExcelLibHelpers.cs" />
+    <Compile Include="Helpers\WebElementExtension.cs" />
     <Compile Include="Page\EmployeePage.cs" />
     <Compile Include="Page\LoginPage.cs" />
     <Compile Include="Test\Program.cs" />
